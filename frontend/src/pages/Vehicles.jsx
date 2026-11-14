@@ -18,7 +18,7 @@ export default function Vehicles() {
   // 1. Fetch vehicles from backend when page loads
   const fetchVehicles = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/vehicles');
+      const res = await axios.get('https://service-centre-npukpq.fly.dev/api/vehicles');
       setVehicles(res.data.data);
     } catch (err) {
       console.error("Error fetching vehicles", err);
@@ -38,7 +38,7 @@ export default function Vehicles() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/vehicles', formData);
+      await axios.post('https://service-centre-npukpq.fly.dev/api/vehicles', formData);
       alert('Vehicle Added Successfully! 🚗');
       setFormData({ vehicleNumber: '', type: 'Car', model: '', ownerName: '', phone: '' });
       setShowForm(false); // Hide form

@@ -15,7 +15,7 @@ export default function Billing() {
 
   const fetchInvoices = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/invoices');
+      const res = await axios.get('https://service-centre-npukpq.fly.dev/api/invoices');
       setInvoices(res.data.data);
     } catch (err) {
       console.error("Error fetching invoices", err);
@@ -41,7 +41,7 @@ export default function Billing() {
         totalAmount: total
       };
       
-      await axios.post('http://localhost:5000/api/invoices', payload);
+      await axios.post('https://service-centre-npukpq.fly.dev/api/invoices', payload);
       alert('Invoice Generated! 🧾');
       setFormData({ vehicleNumber: '', partsCost: '', labourCost: '' });
       setShowForm(false);
@@ -53,7 +53,7 @@ export default function Billing() {
 
   const markAsPaid = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/invoices/${id}`, { status: 'Paid' });
+      await axios.put(`https://service-centre-npukpq.fly.dev/api/invoices/${id}`, { status: 'Paid' });
       fetchInvoices();
     } catch (err) {
       alert('Error updating status');

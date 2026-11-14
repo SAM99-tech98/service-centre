@@ -16,7 +16,7 @@ export default function JobCards() {
   // 1. Fetch Job Cards from backend
   const fetchJobs = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/jobs');
+      const res = await axios.get('https://service-centre-npukpq.fly.dev/api/jobs');
       setJobs(res.data.data);
     } catch (err) {
       console.error("Error fetching jobs", err);
@@ -36,7 +36,7 @@ export default function JobCards() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/jobs', formData);
+      await axios.post('https://service-centre-npukpq.fly.dev/api/jobs', formData);
       alert('Job Card Created Successfully! 🔧');
       setFormData({ vehicleNumber: '', issue: '', estimatedCost: '' });
       setShowForm(false);
@@ -49,7 +49,7 @@ export default function JobCards() {
   // 4. Update Job Status
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/jobs/${id}`, { status: newStatus });
+      await axios.put(`https://service-centre-npukpq.fly.dev/api/jobs/${id}`, { status: newStatus });
       fetchJobs(); // Refresh table to show new color
     } catch (err) {
       alert('Error updating status');

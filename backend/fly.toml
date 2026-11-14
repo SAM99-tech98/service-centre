@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 app = 'service-centre'
 primary_region = 'ams'
 
@@ -6,6 +7,17 @@ primary_region = 'ams'
 [env]
   PORT = '8080'
 
+=======
+# fly.toml app configuration file generated for service-centre-npukpq on 2026-11-14T12:13:55Z
+#
+# See https://docs.fly.io/reference/configuration for information about how to use this file.
+#
+
+app = 'service-centre-npukpq'
+primary_region = 'ams'
+
+[build]
+>>>>>>> 2574db3af5d5d033315fb036ce43b16efcc904ae
 [http_service]
   internal_port = 8080
   force_https = true
@@ -14,6 +26,7 @@ primary_region = 'ams'
   min_machines_running = 0
   processes = ['app']
 
+<<<<<<< HEAD
   [[http_service.checks]]
     grace_period = "30s"
     interval = "15s"
@@ -25,3 +38,10 @@ primary_region = 'ams'
   memory = '256mb'
   cpu_kind = 'shared'
   cpus = 1
+=======
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 256
+>>>>>>> 2574db3af5d5d033315fb036ce43b16efcc904ae

@@ -12,7 +12,7 @@ export default function Dashboard() {
   
   useEffect(() => {
     if (role === 'admin') {
-      axios.get('http://localhost:5000/api/jobs').then(res => setJobs(res.data.data));
+      axios.get('https://service-centre-npukpq.fly.dev/api/jobs').then(res => setJobs(res.data.data));
     }
   }, [role]);
 
@@ -31,7 +31,7 @@ export default function Dashboard() {
     e.preventDefault();
     try {
       // Fetch all jobs and find the one matching the vehicle number
-      const res = await axios.get('http://localhost:5000/api/jobs');
+      const res = await axios.get('https://service-centre-npukpq.fly.dev/api/jobs');
       const found = res.data.data.find(
         j => j.vehicleNumber.toUpperCase() === searchQuery.toUpperCase() && j.status !== 'Delivered'
       );
