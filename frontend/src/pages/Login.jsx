@@ -18,12 +18,12 @@ export default function Login() {
     try {
       if (isRegister) {
         // Register Account
-        await axios.post('https://service-centre-npukpq.fly.dev/api/auth/register', { username, password, role });
+        await axios.post(https://service-centre-ck7p.onrender.com/api/auth/register', { username, password, role });
         alert('Account Created! Please login now.');
         setIsRegister(false); // Switch back to login
       } else {
         // Login
-        const res = await axios.post('https://service-centre-npukpq.fly.dev/api/auth/login', { username, password });
+        const res = await axios.post('https://service-centre-ck7p.onrender.com/api/auth/login', { username, password });
         
         // Save token and role to browser memory
         localStorage.setItem('token', res.data.token);

@@ -9,7 +9,7 @@ export default function HistoryPage() {
 
   useEffect(() => {
     // Fetch all jobs
-    axios.get('https://service-centre-npukpq.fly.dev/api/jobs').then(res => {
+    axios.get('https://service-centre-ck7p.onrender.com/api/jobs').then(res => {
       // Filter to only show "Delivered" jobs for history
       const deliveredJobs = res.data.data.filter(job => job.status === 'Delivered');
       setJobs(deliveredJobs);
