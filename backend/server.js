@@ -4,7 +4,14 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+
+// ⚠️ THIS IS THE CRITICAL FIX FOR VERCEL -> RENDER
+app.use(cors({
+  origin: "https://service-centre-one.vercel.app", // Your live Vercel URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // IMPORT ROUTES
@@ -21,14 +28,15 @@ app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => res.send('API Running'));
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
+// Connect to MongoDB (Added timeout so it doesn't crash immediately)
+mongoose.connect(process.env.MONGO_URI, {
+  serverSelectionTimeoutMS: 30000 // Give it 30 seconds to connect
+})
   .then(() => console.log('✅ MongoDB Connected Successfully!'))
   .catch((err) => console.log('❌ MongoDB Error:', err.message));
 
 // Start Server
 const PORT = process.env.PORT || 5000;
-// The '0.0.0.0' is REQUIRED for Fly.io to work
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
